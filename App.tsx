@@ -69,7 +69,7 @@ function MainApp() {
     <Tab.Navigator screenOptions={{
       tabBarActiveTintColor: '#D4822A',
       tabBarInactiveTintColor: '#9CA3AF',
-      tabBarStyle: { backgroundColor: '#fff', borderTopColor: '#E5E7EB', paddingBottom: 8, paddingTop: 6 },
+      tabBarStyle: { backgroundColor: '#fff', borderTopColor: '#E5E7EB', paddingTop: 6, paddingBottom: 10, height: 82 },
       tabBarLabelStyle: { fontSize: 11, fontWeight: '600' },
     }}>
       <Tab.Screen name="HomeTab" component={HomeScreen} options={{
