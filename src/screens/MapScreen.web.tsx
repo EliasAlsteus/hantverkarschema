@@ -11,10 +11,11 @@ export default function MapScreen() {
       </View>
       <View style={st.body}>
         <Text style={st.icon}>📍</Text>
-        <Text style={st.heading}>Karta kräver mobilapp</Text>
+        <Text style={st.badge}>DEMO</Text>
+        <Text style={st.heading}>Kartvy ej tillgänglig i demo</Text>
         <Text style={st.sub}>
-          Kartfunktionen använder Apple Maps och GPS som inte är tillgängliga i webbläsaren.{'\n'}
-          Ladda ner appen på din iPhone för att se jobben på kartan.
+          Den här webbversionen är en demonstration av appens övriga funktioner.{'\n\n'}
+          En fullständig iOS-app med interaktiv karta, GPS-navigering och Apple Maps-integration är under utveckling och kommer att lanseras framöver.
         </Text>
       </View>
     </View>
@@ -26,7 +27,8 @@ const st = StyleSheet.create({
   header: { backgroundColor: '#1A3057', padding: 20, paddingBottom: 16 },
   title: { fontSize: 20, fontWeight: '700', color: '#fff' },
   body: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 32 },
-  icon: { fontSize: 64, marginBottom: 20 },
+  icon: { fontSize: 64, marginBottom: 16 },
+  badge: { fontSize: 11, fontWeight: '700', color: '#D4822A', letterSpacing: 2, borderWidth: 1, borderColor: '#D4822A', borderRadius: 4, paddingHorizontal: 8, paddingVertical: 3, marginBottom: 16 },
   heading: { fontSize: 22, fontWeight: '800', color: '#1A3057', marginBottom: 12, textAlign: 'center' },
   sub: { fontSize: 15, color: '#6B7280', textAlign: 'center', lineHeight: 24 },
 });
