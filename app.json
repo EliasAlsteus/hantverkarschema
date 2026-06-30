@@ -31,6 +31,9 @@
       "bundler": "metro",
       "name": "Hantverkarschema",
       "shortName": "Schema"
+    },
+    "experiments": {
+      "baseUrl": "/hantverkarschema"
     }
   }
 }
