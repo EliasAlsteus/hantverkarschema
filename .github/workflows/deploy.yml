@@ -36,6 +36,9 @@ jobs:
       - name: Build web
         run: npx expo export --platform web
 
+      - name: Patch viewport for PWA safe area
+        run: sed -i 's/initial-scale=1"/initial-scale=1,viewport-fit=cover"/' dist/index.html
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

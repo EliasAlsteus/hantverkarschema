@@ -62,7 +62,7 @@ export const deleteClient = async (clientId: string): Promise<void> => {
 };
 
 export const saveJob = async (job: Omit<Job, 'id'>): Promise<Job> => {
-  const newJob: Job = { ...job, id: generateId() };
+  const newJob: Job = { ...job, id: generateId(), createdAt: new Date().toISOString() };
   const existing = await getJobs();
   await AsyncStorage.setItem(JOBS_KEY, JSON.stringify([...existing, newJob]));
   return newJob;

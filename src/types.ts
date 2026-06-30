@@ -26,4 +26,5 @@ export type Job = {
   photos: string[];
   addedBy?: string;
   locked?: boolean;
+  createdAt?: string;
 };

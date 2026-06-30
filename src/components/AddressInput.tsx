@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import {
   View, Text, TextInput, TouchableOpacity, StyleSheet,
-  FlatList, ActivityIndicator,
+  ActivityIndicator,
 } from 'react-native';
 
 type Suggestion = {
@@ -99,11 +99,11 @@ export default function AddressInput({ value, onChange, onSelect, placeholder }:
 }
 
 const styles = StyleSheet.create({
-  wrapper: { position: 'relative', zIndex: 10 },
+  wrapper: {},
   inputRow: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#F9FAFB', borderWidth: 1.5, borderColor: '#E5E7EB', borderRadius: 10 },
   input: { flex: 1, padding: 12, fontSize: 15, color: '#111827' },
   spinner: { marginRight: 10 },
-  dropdown: { position: 'absolute', top: '100%', left: 0, right: 0, backgroundColor: '#fff', borderRadius: 12, borderWidth: 1, borderColor: '#E5E7EB', shadowColor: '#000', shadowOpacity: 0.12, shadowRadius: 12, shadowOffset: { width: 0, height: 4 }, elevation: 8, zIndex: 99, marginTop: 4, overflow: 'hidden' },
+  dropdown: { backgroundColor: '#fff', borderRadius: 12, borderWidth: 1, borderColor: '#E5E7EB', shadowColor: '#000', shadowOpacity: 0.12, shadowRadius: 12, shadowOffset: { width: 0, height: 4 }, elevation: 8, marginTop: 4, overflow: 'hidden' },
   suggestion: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 14, paddingVertical: 12, gap: 10 },
   suggestionBorder: { borderBottomWidth: 1, borderBottomColor: '#F3F4F6' },
   suggestionIcon: { fontSize: 14 },

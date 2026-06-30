@@ -132,6 +132,11 @@ export default function JobDetailScreen({ route, navigation }: any) {
               <Text style={st.addedByTxt}>👤 Inlagt av {currentJob.addedBy}</Text>
             </View>
           )}
+          {!!currentJob.createdAt && (
+            <View style={st.addedByRow}>
+              <Text style={st.addedByTxt}>🕐 Registrerat {new Date(currentJob.createdAt).toLocaleDateString('sv-SE', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</Text>
+            </View>
+          )}
         </View>
 
         {/* Photos */}
