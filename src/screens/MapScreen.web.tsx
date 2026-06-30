@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Linking, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Linking, ScrollView, ActivityIndicator, Dimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFocusEffect } from '@react-navigation/native';
 import { MapContainer, TileLayer, Marker, Polyline, useMap } from 'react-leaflet';
@@ -99,6 +99,13 @@ export default function MapScreen() {
     } else {
       setReady(true);
     }
+    // Ensure leaflet container fills parent properly
+    if (!document.querySelector('style[data-leaflet-fix]')) {
+      const s = document.createElement('style');
+      s.setAttribute('data-leaflet-fix', '1');
+      s.textContent = '.leaflet-container { height: 100% !important; width: 100% !important; }';
+      document.head.appendChild(s);
+    }
   }, []);
 
   useFocusEffect(useCallback(() => {
@@ -141,9 +148,12 @@ export default function MapScreen() {
   }
   if (homeLat !== 0 && polyline.length > 1) polyline.push([homeLat, homeLng]);
 
+  const allBgCoords: [number, number][] = bgEntries.map(e => [e.client.location.lat, e.client.location.lng]);
   const fitCoords: [number, number][] = polyline.length > 0
     ? polyline
-    : (homeLat !== 0 ? [[homeLat, homeLng]] : []);
+    : allBgCoords.length > 0
+      ? allBgCoords
+      : (homeLat !== 0 ? [[homeLat, homeLng]] : []);
 
   const openGoogleMaps = () => {
     if (!currentDay) return;
@@ -189,8 +199,8 @@ export default function MapScreen() {
         </View>
       ) : (
         <>
-          {/* Map */}
-          <View style={st.mapWrap}>
+          {/* Map — explicit pixel height so Leaflet can resolve 100% */}
+          <View style={[st.mapWrap, { height: Dimensions.get('window').height - insets.top - 120 - (days.length > 0 ? 180 : 50) }]}>
             <MapContainer center={[59.5, 15.5]} zoom={6} style={{ height: '100%', width: '100%' }} zoomControl>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
