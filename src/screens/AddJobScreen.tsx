@@ -15,8 +15,9 @@ const POT_LABELS = ['', 'Låg', 'Under medel', 'Medel', 'Bra', 'Topp'];
 const QUICK_MINS = [15, 30, 60, 120, 180, 240, 480];
 
 const INIT_STATUS_OPTIONS: { key: JobStatus; label: string; desc: string; color: string }[] = [
-  { key: 'förfrågan', label: 'Förfrågan', desc: 'Kunden har hört av sig, inget mer ännu', color: '#8B5CF6' },
-  { key: 'offert',    label: 'Offert',    desc: 'Offert är skickad och inväntar svar',   color: '#3B82F6' },
+  { key: 'förfrågan',  label: 'Förfrågan',  desc: 'Kunden har hört av sig, inget mer ännu',  color: '#8B5CF6' },
+  { key: 'offert',     label: 'Offert',     desc: 'Offert är skickad och inväntar svar',      color: '#3B82F6' },
+  { key: 'accepterad', label: 'Accepterad', desc: 'Kunden har tackat ja — jobbet är aktivt',  color: '#EAB308' },
 ];
 
 function RatingPicker({ label, sub, value, onChange, colors, labels }: {

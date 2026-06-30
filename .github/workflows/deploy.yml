@@ -37,7 +37,9 @@ jobs:
         run: npx expo export --platform web
 
       - name: Patch viewport for PWA safe area
-        run: sed -i 's/initial-scale=1"/initial-scale=1,viewport-fit=cover"/' dist/index.html
+        run: |
+          sed -i 's/initial-scale=1"/initial-scale=1,viewport-fit=cover"/' dist/index.html
+          sed -i 's|</head>|<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/></head>|' dist/index.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
